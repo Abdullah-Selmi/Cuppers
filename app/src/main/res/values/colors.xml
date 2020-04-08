@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#593C1F</color>
+    <color name="colorPrimaryDark">#593C1F</color>
+    <color name="colorAccent">#593C1F</color>
+    <color name="inStock">#00eb00</color>
+    <color name="outOfStock">#ff0000</color>
+</resources>
