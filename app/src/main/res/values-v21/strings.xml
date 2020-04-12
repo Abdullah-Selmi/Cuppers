@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cuppers</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -15,12 +16,10 @@
     <string name="failed_to_login">Failed to login</string>
     <string name="users">Users</string>
     <string name="username">username</string>
-    <string name="email">email</string>
     <string name="photo">photo</string>
     <string name="phone">phone</string>
     <string name="public_profile">public_profile</string>
     <string name="error_while_logging_in">Error while logging in</string>
-    <string name="no_user_name">No User Name</string>
     <string name="favorite">Favorite</string>
     <string name="cart">Cart</string>
     <string name="your_orders">Your Orders</string>

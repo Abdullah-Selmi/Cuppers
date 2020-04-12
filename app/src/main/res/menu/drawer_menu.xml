@@ -7,54 +7,54 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="Home" />
+            android:title="@string/home" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="Profile" />
+            android:title="@string/profile" />
         <item
             android:id="@+id/nav_favorite"
             android:icon="@drawable/ic_favorite"
-            android:title="Favorite" />
+            android:title="@string/favorite" />
         <item
             android:id="@+id/nav_cart"
             android:icon="@drawable/ic_cart"
-            android:title="Cart" />
+            android:title="@string/cart" />
         <item
             android:id="@+id/nav_your_orders"
             android:icon="@drawable/ic_shop"
-            android:title="Your Orders" />
+            android:title="@string/your_orders" />
 
     </group>
 
-    <item android:title="Setting">
+    <item android:title="@string/setting">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_contact_us"
                     android:icon="@drawable/ic_help"
-                    android:title="Contact Us" />
+                    android:title="@string/contact_us" />
             </group>
             <item
                 android:id="@+id/nav_language"
                 android:icon="@drawable/ic_language"
-                android:title="Language" />
+                android:title="@string/language" />
         </menu>
     </item>
     <item
         android:id="@+id/developers"
-        android:title="Developers"
+        android:title="@string/developers"
         android:visible="false">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_orders"
                     android:icon="@drawable/ic_business"
-                    android:title="Orders" />
+                    android:title="@string/orders" />
                 <item
                     android:id="@+id/nav_edit"
                     android:icon="@drawable/ic_edit"
-                    android:title="Edit" />
+                    android:title="@string/edit" />
             </group>
         </menu>
     </item>

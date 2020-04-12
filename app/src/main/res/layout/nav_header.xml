@@ -3,69 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="176dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/background">
 
     <TextView
         android:id="@+id/loginNavHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="LoginTextViewClicked"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewId"
-        app:layout_constraintStart_toStartOf="@+id/cardViewId" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewId"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="0dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginNavHeaderTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardBackgroundColor="@android:color/transparent">
-
-        <ImageView
-            android:id="@+id/profilePictureNavHeaderImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/profile_default"
-            android:scaleType="centerCrop"/>
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/userNameNavHeaderTextView"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/emailNavHeaderTextView"
-        app:layout_constraintStart_toStartOf="@+id/emailNavHeaderTextView"
-        app:layout_constraintTop_toTopOf="@+id/cardViewId"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="userName" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Cuupers"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/emailNavHeaderTextView"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/cardViewId"
-        app:layout_constraintStart_toEndOf="@+id/cardViewId"
-        app:layout_constraintTop_toBottomOf="@+id/userNameNavHeaderTextView"
-        tools:text="email@example.com" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

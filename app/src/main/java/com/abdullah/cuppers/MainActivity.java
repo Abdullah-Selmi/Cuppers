@@ -7,14 +7,26 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -22,20 +34,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
+    ActionBarDrawerToggle toggle;   
     FirebaseFirestore db;
+    FirebaseAuth firebaseAuth;
+    TextView loginNavHeaderTextView;
+    GoogleSignInAccount googleSignInAccount;
+    View view;
+    GoogleSignInOptions googleSignInOptions;
+    GoogleSignInClient googleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+        ReadyForDrawer(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        findViews();
+        LoginCheck();
+    }
+
+    private void LoginCheck() {
+        if (SaveSharedPreference.getUserName(MainActivity.this).length() > 0) {
+            loginNavHeaderTextView.setText(SaveSharedPreference.getUserName(MainActivity.this));
+        } else {
+            loginNavHeaderTextView.setText(getString(R.string.login));
+        }
+    }
+
+    private void ReadyForDrawer(Bundle savedInstanceState) {
         navigationView.setNavigationItemSelectedListener(this);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
@@ -44,17 +81,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void findViews() {
         toolbar = findViewById(R.id.toolbar);
-        drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         db = FirebaseFirestore.getInstance();
+        view = navigationView.getHeaderView(0);
+        loginNavHeaderTextView = view.findViewById(R.id.loginNavHeaderTextView);
+        firebaseAuth = FirebaseAuth.getInstance();
+        drawerLayout = findViewById(R.id.drawerLayout);
     }
-
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -108,5 +147,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent toLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
         drawerLayout.closeDrawer(GravityCompat.START);
         startActivity(toLoginActivity);
+    }
+
+    public void button(View view) {
+        firebaseAuth.signOut();
+        if (googleSignInAccount != null) {
+            googleSignInOptions = new GoogleSignInOptions.
+                    Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .build();
+            googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+            googleSignInClient.signOut();
+        } else {
+            LoginManager.getInstance().logOut();
+        }
+        loginNavHeaderTextView.setText(getString(R.string.login));
+        SaveSharedPreference.setUserName(this, "");
+    }
+
+    public static class SaveSharedPreference {
+        static final String PREF_USER_NAME = "UserName";
+
+        static SharedPreferences getSharedPreferences(Context ctx) {
+            return PreferenceManager.getDefaultSharedPreferences(ctx);
+        }
+
+        public static void setUserName(Context ctx, String username) {
+            SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+            editor.putString(PREF_USER_NAME, username);
+            editor.apply();
+        }
+
+        public static String getUserName(Context ctx) {
+            return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
+        }
     }
 }
