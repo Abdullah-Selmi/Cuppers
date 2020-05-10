@@ -171,9 +171,12 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     if (document.getId().equals(googleSignInAccount.getEmail())) {
-                                        SaveSharedPreference.setEmail(LoginActivity.this, googleSignInAccount.getEmail());
-                                        SaveSharedPreference.setUserName(LoginActivity.this, googleSignInAccount.getDisplayName());
-                                        SaveSharedPreference.setPhoneNumber(LoginActivity.this, "");
+                                        SaveSharedPreference.setEmail(LoginActivity.this, document.getData().get(getString(R.string.email)).toString());
+                                        SaveSharedPreference.setUserName(LoginActivity.this, document.getData().get(getString(R.string.username)).toString());
+                                        SaveSharedPreference.setPhoneNumber(LoginActivity.this, document.getData().get(getString(R.string.phone)).toString());
+                                        SaveSharedPreference.setAddress(LoginActivity.this, document.getData().get(getString(R.string.address)).toString());
+                                        SaveSharedPreference.setDateOfBirth(LoginActivity.this, document.getData().get(getString(R.string.date_of_birth)).toString());
+                                        SaveSharedPreference.setGender(LoginActivity.this, document.getData().get(getString(R.string.gender)).toString());
                                         check = true;
                                         finish();
                                         Clickable(true);
@@ -185,6 +188,9 @@ public class LoginActivity extends AppCompatActivity {
                                     user.put(getString(R.string.username), googleSignInAccount.getDisplayName());
                                     user.put(getString(R.string.email), googleSignInAccount.getEmail());
                                     user.put(getString(R.string.phone), "");
+                                    user.put(getString(R.string.address), "");
+                                    user.put(getString(R.string.date_of_birth), "//");
+                                    user.put(getString(R.string.gender), "");
 
                                     db.collection(getString(R.string.users))
                                             .document(googleSignInAccount.getEmail())
@@ -195,6 +201,9 @@ public class LoginActivity extends AppCompatActivity {
                                                     SaveSharedPreference.setEmail(LoginActivity.this, googleSignInAccount.getEmail());
                                                     SaveSharedPreference.setUserName(LoginActivity.this, googleSignInAccount.getDisplayName());
                                                     SaveSharedPreference.setPhoneNumber(LoginActivity.this, "");
+                                                    SaveSharedPreference.setAddress(LoginActivity.this, "");
+                                                    SaveSharedPreference.setDateOfBirth(LoginActivity.this, "//");
+                                                    SaveSharedPreference.setGender(LoginActivity.this, "");
                                                     finish();
                                                     Clickable(true);
                                                     loginProgressBar.setVisibility(View.GONE);
@@ -301,9 +310,12 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     if (document.getId().equals(firebaseUser.getEmail())) {
-                                        SaveSharedPreference.setEmail(LoginActivity.this, firebaseUser.getEmail());
-                                        SaveSharedPreference.setUserName(LoginActivity.this, firebaseUser.getDisplayName());
-                                        SaveSharedPreference.setPhoneNumber(LoginActivity.this, "");
+                                        SaveSharedPreference.setEmail(LoginActivity.this, document.getData().get(getString(R.string.email)).toString());
+                                        SaveSharedPreference.setUserName(LoginActivity.this, document.getData().get(getString(R.string.username)).toString());
+                                        SaveSharedPreference.setPhoneNumber(LoginActivity.this, document.getData().get(getString(R.string.phone)).toString());
+                                        SaveSharedPreference.setAddress(LoginActivity.this, document.getData().get(getString(R.string.address)).toString());
+                                        SaveSharedPreference.setDateOfBirth(LoginActivity.this, document.getData().get(getString(R.string.date_of_birth)).toString());
+                                        SaveSharedPreference.setGender(LoginActivity.this, document.getData().get(getString(R.string.gender)).toString());
                                         check = true;
                                         finish();
                                         Clickable(true);
@@ -315,6 +327,9 @@ public class LoginActivity extends AppCompatActivity {
                                     user.put(getString(R.string.username), firebaseUser.getDisplayName());
                                     user.put(getString(R.string.email), firebaseUser.getEmail());
                                     user.put(getString(R.string.phone), "");
+                                    user.put(getString(R.string.address), "");
+                                    user.put(getString(R.string.date_of_birth), "//");
+                                    user.put(getString(R.string.gender), "");
 
                                     db.collection(getString(R.string.users))
                                             .document(firebaseUser.getEmail())
@@ -325,6 +340,9 @@ public class LoginActivity extends AppCompatActivity {
                                                     SaveSharedPreference.setEmail(LoginActivity.this, firebaseUser.getEmail());
                                                     SaveSharedPreference.setUserName(LoginActivity.this, firebaseUser.getDisplayName());
                                                     SaveSharedPreference.setPhoneNumber(LoginActivity.this, "");
+                                                    SaveSharedPreference.setAddress(LoginActivity.this, "");
+                                                    SaveSharedPreference.setDateOfBirth(LoginActivity.this, "//");
+                                                    SaveSharedPreference.setGender(LoginActivity.this, "");
                                                     finish();
                                                     Clickable(true);
                                                     loginProgressBar.setVisibility(View.GONE);
@@ -375,6 +393,9 @@ public class LoginActivity extends AppCompatActivity {
         static final String PREF_EMAIL = "Email";
         static final String PREF_USER_NAME = "UserName";
         static final String PREF_PHONE_NUMBER = "PhoneNumber";
+        static final String PREF_ADDRESS = "Address";
+        static final String PREF_DATE_OF_BIRTH = "DateOfBirth";
+        static final String PREF_GENDER = "Gender";
 
         static SharedPreferences getSharedPreferences(Context ctx) {
             return PreferenceManager.getDefaultSharedPreferences(ctx);
@@ -409,6 +430,35 @@ public class LoginActivity extends AppCompatActivity {
         public static String getPhoneNumber(Context ctx) {
             return getSharedPreferences(ctx).getString(PREF_PHONE_NUMBER, "");
         }
-    }
 
+        public static void setAddress(Context ctx, String address) {
+            SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+            editor.putString(PREF_ADDRESS, address);
+            editor.apply();
+        }
+
+        public static String getAddress(Context ctx) {
+            return getSharedPreferences(ctx).getString(PREF_ADDRESS, "");
+        }
+
+        public static void setDateOfBirth(Context ctx, String dateofbirth) {
+            SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+            editor.putString(PREF_DATE_OF_BIRTH, dateofbirth);
+            editor.apply();
+        }
+
+        public static String getDateOfBirth(Context ctx) {
+            return getSharedPreferences(ctx).getString(PREF_DATE_OF_BIRTH, "");
+        }
+
+        public static void setGender(Context ctx, String gender) {
+            SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+            editor.putString(PREF_GENDER, gender);
+            editor.apply();
+        }
+
+        public static String getGender(Context ctx) {
+            return getSharedPreferences(ctx).getString(PREF_GENDER, "");
+        }
+    }
 }

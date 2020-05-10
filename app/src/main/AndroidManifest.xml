@@ -22,7 +22,9 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
