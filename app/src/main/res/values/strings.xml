@@ -24,11 +24,13 @@
     <string name="favorite">Favorite</string>
     <string name="cart">Cart</string>
     <string name="your_orders">Your Orders</string>
-    <string name="setting">Setting</string>
-    <string name="contact_us">Contact Us</string>
+    <string name="your_credit_cards">Your Credit Cards</string>
+    <string name="facebook_page">Facebook Page</string>
+    <string name="logout">Logout</string>
+    <string name="developer">Developer</string>
+    <string name="analytics">Analytics</string>
+    <string name="customers_orders">Customers Orders</string>
     <string name="language">Language</string>
-    <string name="developers">Developers</string>
-    <string name="orders">Orders</string>
     <string name="edit">Edit</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>

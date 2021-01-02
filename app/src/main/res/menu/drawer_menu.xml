@@ -24,37 +24,35 @@
             android:id="@+id/nav_your_orders"
             android:icon="@drawable/ic_shop"
             android:title="@string/your_orders" />
-
+        <item
+            android:id="@+id/nav_your_credit_cards"
+            android:icon="@drawable/ic_credit_card"
+            android:title="@string/your_credit_cards" />
+        <item
+            android:id="@+id/nav_facebook_page"
+            android:icon="@drawable/ic_phone"
+            android:title="@string/facebook_page" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_delete"
+            android:title="@string/logout" />
     </group>
 
-    <item android:title="@string/setting">
+    <item android:title="@string/developer">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_contact_us"
-                    android:icon="@drawable/ic_help"
-                    android:title="@string/contact_us" />
-            </group>
-            <item
-                android:id="@+id/nav_language"
-                android:icon="@drawable/ic_language"
-                android:title="@string/language" />
-        </menu>
-    </item>
-    <item
-        android:id="@+id/developers"
-        android:title="@string/developers"
-        android:visible="false">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_orders"
-                    android:icon="@drawable/ic_business"
-                    android:title="@string/orders" />
+                    android:id="@+id/nav_customers_orders"
+                    android:icon="@drawable/ic_list"
+                    android:title="@string/customers_orders" />
                 <item
                     android:id="@+id/nav_edit"
                     android:icon="@drawable/ic_edit"
                     android:title="@string/edit" />
+                <item
+                    android:id="@+id/nav_analytics"
+                    android:icon="@drawable/ic_analytics"
+                    android:title="@string/analytics" />
             </group>
         </menu>
     </item>

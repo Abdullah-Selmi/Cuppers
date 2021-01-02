@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "1089334496199",
-    "firebase_url": "https://cuppers-8c424.firebaseio.com",
-    "project_id": "cuppers-8c424",
-    "storage_bucket": "cuppers-8c424.appspot.com"
+    "project_number": "728232558550",
+    "project_id": "cuppers-e963e",
+    "storage_bucket": "cuppers-e963e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1089334496199:android:efe86456f7c8d6554527e2",
+        "mobilesdk_app_id": "1:728232558550:android:657bdfb9910c8e7498ee77",
         "android_client_info": {
           "package_name": "com.abdullah.cuppers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1089334496199-3d3orj22l6beigrqik68hj24mrj51ff5.apps.googleusercontent.com",
+          "client_id": "728232558550-kal4ouf11qcc7h0br7aug75hkkqqhpg7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCbRet3afkq5L0aCGfjzBWK1FOYu6XbFUY"
+          "current_key": "AIzaSyDmSp9V8R2gEUSHIbI2Lqe5Z_HQT5BJm6o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1089334496199-3d3orj22l6beigrqik68hj24mrj51ff5.apps.googleusercontent.com",
+              "client_id": "728232558550-kal4ouf11qcc7h0br7aug75hkkqqhpg7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -20,89 +20,147 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/loginTextView">
 
-
-        <TextView
-            android:id="@+id/loginOrTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/or"
-            android:textColor="@android:color/holo_blue_dark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/googleButton" />
-
-        <Button
-            android:id="@+id/googleButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:background="@drawable/google_button"
-            android:drawableStart="@drawable/ic_google_logo"
-            android:drawableLeft="@drawable/ic_google_logo"
-            android:onClick="googleButtonClicked"
-            android:text="@string/login_with_google"
-            android:textColor="@android:color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginChoseMethodTextView" />
+            android:padding="4dp">
 
-        <Button
-            android:id="@+id/facebookButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/facebook_button"
-            android:drawableStart="@drawable/ic_facebook_logo"
-            android:drawableLeft="@drawable/ic_facebook_logo"
-            android:onClick="facebookButtonClicked"
-            android:text="@string/login_with_facebook"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginOrTextView" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/loginChoseMethodTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="@string/chose_a_method_to_login"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/emailTextViewLoginScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Email"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/emailEditTextLoginScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Yout Email"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/emailTextViewLoginScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/emailTextViewLoginScreen" />
+
+                <TextView
+                    android:id="@+id/passwordTextViewLoginScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Password"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/emailTextViewLoginScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/emailEditTextLoginScreen" />
+
+                <EditText
+                    android:id="@+id/passwordEditTextLoginScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Yout Password"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/emailTextViewLoginScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordTextViewLoginScreen" />
+
+                <TextView
+                    android:id="@+id/forgetPasswordTextViweLoginScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Forgot Ypur Password ?"
+                    android:textColor="@android:color/holo_blue_dark"
+                    app:layout_constraintStart_toStartOf="@+id/passwordEditTextLoginScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLoginScreen" />
+
+                <Button
+                    android:id="@+id/loginButtonLoginScreen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:background="@drawable/login_button_background"
+                    android:text="Login"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/forgetPasswordTextViweLoginScreen" />
+
+                <TextView
+                    android:id="@+id/orTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="or"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/loginButtonLoginScreen" />
+
+                <Button
+                    android:id="@+id/RegisterButtonLoginScreen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/login_button_background"
+                    android:onClick="RegisterButtonLoginScreenClicked"
+                    android:text="Register"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/orTextView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/loginProgressBar"

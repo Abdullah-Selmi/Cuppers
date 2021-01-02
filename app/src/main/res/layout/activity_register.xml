@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/registerTextViewRegisterScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerTextViewRegisterScreen">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/firstNameTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="* First Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/firstNameEditTextRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Your First Name"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/firstNameTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/firstNameTextViewRegisterScreen" />
+
+                <TextView
+                    android:id="@+id/lastNameTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="* Last Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/firstNameTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/firstNameEditTextRegisterScreen" />
+
+                <EditText
+                    android:id="@+id/lastNameEditTextRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Your Last Name"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/firstNameEditTextRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameTextViewRegisterScreen" />
+
+                <TextView
+                    android:id="@+id/phoneNumberTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="* phone"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/lastNameTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameEditTextRegisterScreen" />
+
+                <EditText
+                    android:id="@+id/phoneNumberEditTextRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Your Phone Number"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/confirmPasswordEditTextRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextViewRegisterScreen" />
+
+                <TextView
+                    android:id="@+id/emailTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="* Email"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/phoneNumberTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNumberEditTextRegisterScreen" />
+
+                <EditText
+                    android:id="@+id/emailEditTextRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Your Email"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/lastNameEditTextRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/emailTextViewRegisterScreen" />
+
+                <TextView
+                    android:id="@+id/passwordTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="* Password"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/emailTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/emailEditTextRegisterScreen" />
+
+                <EditText
+                    android:id="@+id/passwordEditTextRegisterScreen3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Enter Your Password"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/emailEditTextRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordTextViewRegisterScreen" />
+
+                <TextView
+                    android:id="@+id/passwordTextViewRegisterScreen4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="* Confirm Password"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/passwordTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordEditTextRegisterScreen3" />
+
+                <EditText
+                    android:id="@+id/confirmPasswordEditTextRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_background"
+                    android:ems="10"
+                    android:hint="Re-enter Password"
+                    android:inputType="textPersonName"
+                    android:padding="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/passwordEditTextRegisterScreen3"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordTextViewRegisterScreen4" />
+
+                <TextView
+                    android:id="@+id/dateOfBirthTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Date Of Birth"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/dateOfBirthButtonRegisterScreen"
+                    app:layout_constraintEnd_toStartOf="@+id/dateOfBirthButtonRegisterScreen"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/passwordTextViewRegisterScreen4"
+                    app:layout_constraintTop_toBottomOf="@+id/confirmPasswordEditTextRegisterScreen" />
+
+                <Button
+                    android:id="@+id/dateOfBirthButtonRegisterScreen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/login_button_background"
+                    android:text="Set Date Of Birth"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/dateOfBirthTextViewRegisterScreen"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/dateOfBirthTextViewRegisterScreen"
+                    app:layout_constraintTop_toTopOf="@+id/dateOfBirthTextViewRegisterScreen" />
+
+                <TextView
+                    android:id="@+id/genderTextViewRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Gender"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/genderRadioGroupRegisterScreen"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/dateOfBirthTextViewRegisterScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/dateOfBirthButtonRegisterScreen" />
+
+                <RadioGroup
+                    android:id="@+id/genderRadioGroupRegisterScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/genderTextViewRegisterScreen"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/genderTextViewRegisterScreen"
+                    app:layout_constraintTop_toTopOf="@+id/genderTextViewRegisterScreen">
+
+                    <RadioButton
+                        android:id="@+id/maleRadioButtonRegisterScreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:text="Male"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/femaleRadioButtonRegisterScreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:text="Female"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/nextButtonRegisterScreen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:background="@drawable/login_button_background"
+                    android:text="Next"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/genderTextViewRegisterScreen" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

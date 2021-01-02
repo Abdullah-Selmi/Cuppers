@@ -1,15 +1,11 @@
 package com.abdullah.cuppers;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,29 +16,15 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.login.LoginManager;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,12 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     FirebaseFirestore db;
-    FirebaseAuth firebaseAuth;
     TextView loginNavHeaderTextView;
-    GoogleSignInAccount googleSignInAccount;
     View HomeView;
-    GoogleSignInOptions googleSignInOptions;
-    GoogleSignInClient googleSignInClient;
     Intent toLoginActivity;
 
     @Override
@@ -75,12 +53,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         LoginCheck();
     }
 
-    private void LoginCheck() {
-        if (SaveSharedPreference.getUserName(MainActivity.this).length() > 0) {
-            loginNavHeaderTextView.setText(SaveSharedPreference.getUserName(MainActivity.this));
-        } else {
-            loginNavHeaderTextView.setText(getString(R.string.login));
-        }
+    private void findHomeViews() {
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.nav_view);
+        db = FirebaseFirestore.getInstance();
+        HomeView = navigationView.getHeaderView(0);
+        loginNavHeaderTextView = HomeView.findViewById(R.id.loginNavHeaderTextView);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        toLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
     }
 
     private void ReadyForDrawer(Bundle savedInstanceState) {
@@ -97,15 +77,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle(R.string.app_name);
     }
 
-    private void findHomeViews() {
-        toolbar = findViewById(R.id.toolbar);
-        navigationView = findViewById(R.id.nav_view);
-        db = FirebaseFirestore.getInstance();
-        HomeView = navigationView.getHeaderView(0);
-        loginNavHeaderTextView = HomeView.findViewById(R.id.loginNavHeaderTextView);
-        firebaseAuth = FirebaseAuth.getInstance();
-        drawerLayout = findViewById(R.id.drawerLayout);
-        toLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
+    private void LoginCheck() {
+        if (SaveSharedPreference.getUserName(MainActivity.this).length() > 0) {
+            loginNavHeaderTextView.setText(SaveSharedPreference.getUserName(MainActivity.this));
+        } else {
+            loginNavHeaderTextView.setText(getString(R.string.login));
+        }
     }
 
     @Override
@@ -121,53 +98,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (SaveSharedPreference.getUserName(MainActivity.this).equals("")) {
             switch (item.getItemId()) {
+                case R.id.nav_profile:
+                case R.id.nav_favorite:
+                case R.id.nav_cart:
+                case R.id.nav_your_orders:
+                case R.id.nav_your_credit_cards:
+                    startActivity(toLoginActivity);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new HomeFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
                 case R.id.nav_home:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new HomeFragment()).commit();
                     toolbar.setTitle(R.string.app_name);
                     break;
-                case R.id.nav_cart:
-                    startActivity(toLoginActivity);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new HomeFragment()).commit();
+                case R.id.nav_facebook_page:
+                    Toast.makeText(this, "To Facebook Page", Toast.LENGTH_SHORT).show();
                     toolbar.setTitle(R.string.app_name);
                     break;
-                case R.id.nav_contact_us:
+                case R.id.nav_logout:
+                    Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
+                case R.id.nav_customers_orders:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new ContactUsFragment()).commit();
-                    toolbar.setTitle(R.string.contact_us);
+                            new CustomersOrdersFragment()).commit();
+                    toolbar.setTitle(R.string.customers_orders);
                     break;
                 case R.id.nav_edit:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new EditFragment()).commit();
-                    toolbar.setTitle(R.string.edit);
-                    break;
-                case R.id.nav_favorite:
-                    startActivity(toLoginActivity);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new HomeFragment()).commit();
                     toolbar.setTitle(R.string.app_name);
                     break;
-                case R.id.nav_orders:
-                    startActivity(toLoginActivity);
+                case R.id.nav_analytics:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new HomeFragment()).commit();
+                            new AnalyticsFragment()).commit();
                     toolbar.setTitle(R.string.app_name);
-                    break;
-                case R.id.nav_profile:
-                    startActivity(toLoginActivity);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new HomeFragment()).commit();
-                    toolbar.setTitle(R.string.app_name);
-                    break;
-                case R.id.nav_your_orders:
-                    startActivity(toLoginActivity);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new HomeFragment()).commit();
-                    toolbar.setTitle(R.string.app_name);
-                    break;
-                case R.id.nav_language:
-                    Toast.makeText(this, "Change The Language", Toast.LENGTH_SHORT).show();
                     break;
             }
 
@@ -180,48 +147,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             new HomeFragment()).commit();
                     toolbar.setTitle(R.string.app_name);
                     break;
-                case R.id.nav_cart:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new CartFragment()).commit();
-                    toolbar.setTitle(R.string.cart);
-                    break;
-                case R.id.nav_contact_us:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new ContactUsFragment()).commit();
-                    toolbar.setTitle(R.string.contact_us);
-                    break;
-                case R.id.nav_edit:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new EditFragment()).commit();
-                    toolbar.setTitle(R.string.edit);
-                    break;
-                case R.id.nav_favorite:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new FavoriteFragment()).commit();
-                    toolbar.setTitle(R.string.favorite);
-                    break;
-                case R.id.nav_orders:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new OrdersFragment()).commit();
-                    toolbar.setTitle(R.string.orders);
-                    break;
                 case R.id.nav_profile:
                     drawerLayout.closeDrawer(GravityCompat.START);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new ProfileFragment()).commit();
-                    toolbar.setTitle(R.string.profile);
+                    toolbar.setTitle(R.string.app_name);
 //                    FindProfileViews();
 //                    innerConstraintLayout1.setVisibility(View.VISIBLE);
 //                    innerConstraintLayout2.setVisibility(View.GONE);
 //                    setInformation();
                     break;
+                case R.id.nav_favorite:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new FavoriteFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
+                case R.id.nav_cart:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new CartFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
                 case R.id.nav_your_orders:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new YourOrdersFragment()).commit();
-                    toolbar.setTitle(R.string.your_orders);
+                    toolbar.setTitle(R.string.app_name);
                     break;
-                case R.id.nav_language:
-                    Toast.makeText(this, "Change The Language", Toast.LENGTH_SHORT).show();
+                case R.id.nav_your_credit_cards:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new YourCreditCardsFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
+                case R.id.nav_facebook_page:
+                    Toast.makeText(this, "To Facebook Page", Toast.LENGTH_SHORT).show();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
+                case R.id.nav_logout:
+                    Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
+                case R.id.nav_customers_orders:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new CustomersOrdersFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
+                break;
+                case R.id.nav_edit:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new EditFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
+                    break;
+                case R.id.nav_analytics:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new AnalyticsFragment()).commit();
+                    toolbar.setTitle(R.string.app_name);
                     break;
             }
 
@@ -318,16 +295,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void Logout() {
         Clickable(false);
-        firebaseAuth.signOut();
-        if (googleSignInAccount != null) {
-            googleSignInOptions = new GoogleSignInOptions.
-                    Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .build();
-            googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-            googleSignInClient.signOut();
-        } else {
-            LoginManager.getInstance().logOut();
-        }
         loginNavHeaderTextView.setText(getString(R.string.login));
         SaveSharedPreference.setUserName(this, "");
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

@@ -1,14 +1,11 @@
 package com.abdullah.cuppers;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -246,23 +240,18 @@ public class ProfileFragment extends Fragment {
 
     public void innerConstraintLayout1() {
         userName.setText(userNameEditText.getText().toString().trim());
-//        userName.setTextColor(getResources().getColor(R.color.white));
         MainActivity.SaveSharedPreference.setUserName(getActivity(), userNameEditText.getText().toString().trim());
         phoneNumber.setText(phoneNumberEditText.getText().toString().trim());
-//        phoneNumber.setTextColor(getResources().getColor(R.color.white));
         MainActivity.SaveSharedPreference.setPhoneNumber(getActivity(), phoneNumberEditText.getText().toString().trim());
         if (addressEditText.getText().toString().trim().equals("")) {
             address.setText(R.string.no_address);
-//            address.setTextColor(getResources().getColor(R.color.outOfStock));
             MainActivity.SaveSharedPreference.setAddress(getActivity(), "");
         } else {
             address.setText(addressEditText.getText().toString().trim());
-//            address.setTextColor(getResources().getColor(R.color.white));
             MainActivity.SaveSharedPreference.setAddress(getActivity(), addressEditText.getText().toString().trim());
         }
         dateOfBirth.setText(dayEditText.getText().toString().trim() + "/" + monthEditText.getText().toString().trim() + "/"
                 + yearEditText.getText().toString().trim());
-//        dateOfBirth.setTextColor(getResources().getColor(R.color.white));
         MainActivity.SaveSharedPreference.setDateOfBirth(getActivity(), dayEditText.getText().toString().trim() + "/" +
                 monthEditText.getText().toString().trim() + "/" + yearEditText.getText().toString().trim());
         if (maleRadioButton.isChecked()) {
@@ -272,7 +261,6 @@ public class ProfileFragment extends Fragment {
             gender.setText(femaleRadioButton.getText().toString().trim());
             MainActivity.SaveSharedPreference.setGender(getActivity(), femaleRadioButton.getText().toString().trim());
         }
-//        gender.setTextColor(getResources().getColor(R.color.white));
     }
 
     public void innerConstraintLayout2() {
@@ -350,45 +338,33 @@ public class ProfileFragment extends Fragment {
     public void setInformation() {
         if (MainActivity.SaveSharedPreference.getEmail(getActivity()).equals("")) {
             email.setText(getString(R.string.no_email));
-//            email.setTextColor(getResources().getColor(R.color.outOfStock));
         } else {
             email.setText(MainActivity.SaveSharedPreference.getEmail(getActivity()));
-//            email.setTextColor(getResources().getColor(R.color.white));
         }
         if (MainActivity.SaveSharedPreference.getUserName(getActivity()).equals("")) {
             userName.setText(getString(R.string.no_user_name));
-//            userName.setTextColor(getResources().getColor(R.color.outOfStock));
         } else {
             userName.setText(MainActivity.SaveSharedPreference.getUserName(getActivity()));
-//            userName.setTextColor(getResources().getColor(R.color.white));
         }
         if (MainActivity.SaveSharedPreference.getPhoneNumber(getActivity()).equals("")) {
             phoneNumber.setText(getString(R.string.no_phone_number));
-//            phoneNumber.setTextColor(getResources().getColor(R.color.outOfStock));
         } else {
             phoneNumber.setText(MainActivity.SaveSharedPreference.getPhoneNumber(getActivity()));
-//            phoneNumber.setTextColor(getResources().getColor(R.color.white));
         }
         if (MainActivity.SaveSharedPreference.getAddress(getActivity()).equals("")) {
             address.setText(getString(R.string.no_address));
-//            address.setTextColor(getResources().getColor(R.color.outOfStock));
         } else {
             address.setText(MainActivity.SaveSharedPreference.getAddress(getActivity()));
-//            address.setTextColor(getResources().getColor(R.color.white));
         }
         if (MainActivity.SaveSharedPreference.getDateOfBirth(getActivity()).equals("//")) {
             dateOfBirth.setText(getString(R.string.no_date_of_birth));
-//            dateOfBirth.setTextColor(getResources().getColor(R.color.outOfStock));
         } else {
             dateOfBirth.setText(MainActivity.SaveSharedPreference.getDateOfBirth(getActivity()));
-//            dateOfBirth.setTextColor(getResources().getColor(R.color.white));
         }
         if (MainActivity.SaveSharedPreference.getGender(getActivity()).equals("")) {
             gender.setText(getString(R.string.no_gender));
-//            gender.setTextColor(getResources().getColor(R.color.outOfStock));
         } else {
             gender.setText(MainActivity.SaveSharedPreference.getGender(getActivity()));
-//            gender.setTextColor(getResources().getColor(R.color.white));
         }
     }
 
@@ -446,7 +422,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onShow(DialogInterface dialog) {
                 myQuittingDialogBox.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.outOfStock));
-                myQuittingDialogBox.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
+                myQuittingDialogBox.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorAccent));
             }
         });
 
