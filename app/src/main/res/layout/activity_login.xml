@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".LoginActivity">
+    tools:context=".Activities.LoginActivity">
 
     <TextView
         android:id="@+id/loginTextView"
@@ -45,7 +45,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/emailTextViewLoginScreen"
+                    android:id="@+id/phoneVerifictionTextViewPhoneVerificationScreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/emailEditTextLoginScreen"
+                    android:id="@+id/verificationCodeEditTextPhoneVerificationScreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -69,8 +69,8 @@
                     android:hint="Enter Yout Email"
                     android:inputType="textPersonName"
                     android:padding="8dp"
-                    app:layout_constraintStart_toStartOf="@+id/emailTextViewLoginScreen"
-                    app:layout_constraintTop_toBottomOf="@+id/emailTextViewLoginScreen" />
+                    app:layout_constraintStart_toStartOf="@+id/phoneVerifictionTextViewPhoneVerificationScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneVerifictionTextViewPhoneVerificationScreen" />
 
                 <TextView
                     android:id="@+id/passwordTextViewLoginScreen"
@@ -80,8 +80,8 @@
                     android:text="Password"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/emailTextViewLoginScreen"
-                    app:layout_constraintTop_toBottomOf="@+id/emailEditTextLoginScreen" />
+                    app:layout_constraintStart_toStartOf="@+id/phoneVerifictionTextViewPhoneVerificationScreen"
+                    app:layout_constraintTop_toBottomOf="@+id/verificationCodeEditTextPhoneVerificationScreen" />
 
                 <EditText
                     android:id="@+id/passwordEditTextLoginScreen"
@@ -95,11 +95,11 @@
                     android:hint="Enter Yout Password"
                     android:inputType="textPersonName"
                     android:padding="8dp"
-                    app:layout_constraintStart_toStartOf="@+id/emailTextViewLoginScreen"
+                    app:layout_constraintStart_toStartOf="@+id/phoneVerifictionTextViewPhoneVerificationScreen"
                     app:layout_constraintTop_toBottomOf="@+id/passwordTextViewLoginScreen" />
 
                 <TextView
-                    android:id="@+id/forgetPasswordTextViweLoginScreen"
+                    android:id="@+id/resendVerificationCodeTextViewPhoneVerificationScreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -111,7 +111,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLoginScreen" />
 
                 <Button
-                    android:id="@+id/loginButtonLoginScreen"
+                    android:id="@+id/FinishButtonPhoneVerificationScreen"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -124,7 +124,7 @@
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/forgetPasswordTextViweLoginScreen" />
+                    app:layout_constraintTop_toBottomOf="@+id/resendVerificationCodeTextViewPhoneVerificationScreen" />
 
                 <TextView
                     android:id="@+id/orTextView"
@@ -137,7 +137,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/loginButtonLoginScreen" />
+                    app:layout_constraintTop_toBottomOf="@+id/FinishButtonPhoneVerificationScreen" />
 
                 <Button
                     android:id="@+id/RegisterButtonLoginScreen"

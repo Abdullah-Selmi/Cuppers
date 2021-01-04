@@ -1,4 +1,4 @@
-package com.abdullah.cuppers;
+package com.abdullah.cuppers.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,6 +22,17 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.abdullah.cuppers.Fragments.AnalyticsFragment;
+import com.abdullah.cuppers.Fragments.CartFragment;
+import com.abdullah.cuppers.Fragments.CustomersOrdersFragment;
+import com.abdullah.cuppers.Fragments.EditFragment;
+import com.abdullah.cuppers.Fragments.FavoriteFragment;
+import com.abdullah.cuppers.Fragments.HomeFragment;
+import com.abdullah.cuppers.Fragments.ProfileFragment;
+import com.abdullah.cuppers.Fragments.YourCreditCardsFragment;
+import com.abdullah.cuppers.Fragments.YourOrdersFragment;
+import com.abdullah.cuppers.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;

@@ -1,4 +1,4 @@
-package com.abdullah.cuppers;
+package com.abdullah.cuppers.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
+import com.abdullah.cuppers.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 

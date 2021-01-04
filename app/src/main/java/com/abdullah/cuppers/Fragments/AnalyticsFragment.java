@@ -1,4 +1,4 @@
-package com.abdullah.cuppers;
+package com.abdullah.cuppers.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class FavoriteFragment extends Fragment {
+import com.abdullah.cuppers.R;
+
+public class AnalyticsFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.favorite, container, false);
+        return inflater.inflate(R.layout.analytics, container, false);
     }
 }

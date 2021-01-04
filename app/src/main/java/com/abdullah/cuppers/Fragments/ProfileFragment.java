@@ -1,4 +1,4 @@
-package com.abdullah.cuppers;
+package com.abdullah.cuppers.Fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,6 +24,8 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.abdullah.cuppers.Activities.MainActivity;
+import com.abdullah.cuppers.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
