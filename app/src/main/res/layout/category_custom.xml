@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ItemImageViewItemDetailsScreen"
+            android:id="@+id/categoryImageImageViewCategoryCustom"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
@@ -31,7 +31,7 @@
             android:background="@drawable/rounded_corners">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/categoryNameTextViewCategoryCustom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"

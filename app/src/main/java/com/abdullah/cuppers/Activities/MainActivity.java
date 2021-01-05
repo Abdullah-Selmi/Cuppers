@@ -29,7 +29,6 @@ import com.abdullah.cuppers.Fragments.CustomersOrdersFragment;
 import com.abdullah.cuppers.Fragments.EditFragment;
 import com.abdullah.cuppers.Fragments.FavoriteFragment;
 import com.abdullah.cuppers.Fragments.HomeFragment;
-import com.abdullah.cuppers.Fragments.ProfileFragment;
 import com.abdullah.cuppers.Fragments.YourCreditCardsFragment;
 import com.abdullah.cuppers.Fragments.YourOrdersFragment;
 import com.abdullah.cuppers.R;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseFirestore db;
     TextView loginNavHeaderTextView;
     View HomeView;
-    Intent toLoginActivity;
+    Intent toLoginActivity, toProfileActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         loginNavHeaderTextView = HomeView.findViewById(R.id.loginNavHeaderTextView);
         drawerLayout = findViewById(R.id.drawerLayout);
         toLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
+        toProfileActivity = new Intent(MainActivity.this, ProfileActivity.class);
     }
 
     private void ReadyForDrawer(Bundle savedInstanceState) {
@@ -160,8 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
                 case R.id.nav_profile:
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new ProfileFragment()).commit();
+                    startActivity(toProfileActivity);
                     toolbar.setTitle(R.string.app_name);
 //                    FindProfileViews();
 //                    innerConstraintLayout1.setVisibility(View.VISIBLE);
@@ -224,10 +223,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
             startActivity(toLoginActivity);
         } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ProfileFragment()).commit();
             drawerLayout.closeDrawer(GravityCompat.START);
             navigationView.setCheckedItem(R.id.nav_profile);
+            startActivity(toProfileActivity);
         }
     }
 
@@ -366,18 +364,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Toast.makeText(MainActivity.this, "Account has been Deleted Successfully", Toast.LENGTH_SHORT).show();
                         Logout();
                         Clickable(true);
-                        View profileView = getLayoutInflater().inflate(R.layout.profile, null);
-                        ProgressBar profileProgressBar = profileView.findViewById(R.id.profileProgressBar);
-                        profileProgressBar.setVisibility(View.GONE);
+                        View profileView = getLayoutInflater().inflate(R.layout.activity_profile, null);
+//                        ProgressBar profileProgressBar = profileView.findViewById(R.id.profileProgressBar);TODO
+//                        profileProgressBar.setVisibility(View.GONE);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(MainActivity.this, "Error while deleting account", Toast.LENGTH_SHORT).show();
                 Clickable(true);
-                View profileView = getLayoutInflater().inflate(R.layout.profile, null);
-                ProgressBar profileProgressBar = profileView.findViewById(R.id.profileProgressBar);
-                profileProgressBar.setVisibility(View.GONE);
+                View profileView = getLayoutInflater().inflate(R.layout.activity_profile, null);
+//                ProgressBar profileProgressBar = profileView.findViewById(R.id.profileProgressBar);TODO
+//                profileProgressBar.setVisibility(View.GONE);
             }
         });
     }
