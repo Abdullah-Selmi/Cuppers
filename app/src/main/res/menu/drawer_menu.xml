@@ -21,9 +21,9 @@
             android:icon="@drawable/ic_cart"
             android:title="@string/cart" />
         <item
-            android:id="@+id/nav_your_orders"
+            android:id="@+id/nav_my_orders"
             android:icon="@drawable/ic_shop"
-            android:title="@string/your_orders" />
+            android:title="My Orders" />
         <item
             android:id="@+id/nav_your_credit_cards"
             android:icon="@drawable/ic_credit_card"

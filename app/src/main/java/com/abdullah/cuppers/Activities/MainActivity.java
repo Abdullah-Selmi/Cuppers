@@ -19,7 +19,6 @@ import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +29,7 @@ import com.abdullah.cuppers.Fragments.EditFragment;
 import com.abdullah.cuppers.Fragments.FavoriteFragment;
 import com.abdullah.cuppers.Fragments.HomeFragment;
 import com.abdullah.cuppers.Fragments.YourCreditCardsFragment;
-import com.abdullah.cuppers.Fragments.YourOrdersFragment;
+import com.abdullah.cuppers.Fragments.MyOrdersFragment;
 import com.abdullah.cuppers.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.nav_profile:
                 case R.id.nav_favorite:
                 case R.id.nav_cart:
-                case R.id.nav_your_orders:
+                case R.id.nav_my_orders:
                 case R.id.nav_your_credit_cards:
                     startActivity(toLoginActivity);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -177,9 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             new CartFragment()).commit();
                     toolbar.setTitle(R.string.app_name);
                     break;
-                case R.id.nav_your_orders:
+                case R.id.nav_my_orders:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new YourOrdersFragment()).commit();
+                            new MyOrdersFragment()).commit();
                     toolbar.setTitle(R.string.app_name);
                     break;
                 case R.id.nav_your_credit_cards:

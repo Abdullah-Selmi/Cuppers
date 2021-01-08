@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.abdullah.cuppers.R;
 
-public class YourOrdersFragment extends Fragment {
+public class MyOrdersFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.your_orders, container, false);
+        return inflater.inflate(R.layout.my_orders, container, false);
     }
 }
